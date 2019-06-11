@@ -1,0 +1,77 @@
+<?php
+
+require_once "model/User.php" ;
+require_once "model/Sesion.php" ;
+
+    class controllerUser{
+
+        private $sesion;
+
+        public function __construct(){
+            $this->sesion = new Sesion() ;
+        }
+        
+        public function sigin(){
+        
+            
+            if(isset($_SESSION["email"])){
+                header("Location: index.php?mod=anime&ope=aniadir");
+            }
+            
+            if($_SERVER["REQUEST_METHOD"] == "GET") {
+
+                
+
+                if(isset($_GET["email"]) && isset($_GET["password"])){
+                    $email   = $_GET["email"];
+                    $password = $_GET["password"];
+                
+                    $db = Database::getInstance();
+
+                    $db->doQuery("SELECT * FROM user WHERE email=:email AND password=:password;",
+                                    [":email" => $email,
+                                        ":password" => $password]);
+            
+                    $resultado = $db->getRow();
+                    $this->sesion->init();
+                    
+                    
+                    
+                    if ($resultado== false) {
+                        $_SESSION["email"]=$email;
+                        // $_SESSION["id"]=$id;
+                        header("Location: index.php?mod=anime&ope=aniadir");
+                        
+                    }else{
+                        require_once "view/login.php";
+                        echo "El nombre o la contraseña no es correcta";
+                    
+                    }
+                } else{
+                    require_once "view/login.php";
+                }
+            }
+        }
+
+        public function logout(){
+            session_start();
+            session_unset();
+            session_destroy();
+            header("Location: index.php?mod=anime&ope=index") ;
+        }
+
+        public function create()
+        {
+            if(isset($_GET["nom"])):
+                $usuario = new Usuario();
+                $usuario->setNombre($_GET["nom"]) ;
+                $usuario->setPassword($_GET["pass"]) ;
+                $usuario->setEmail($_GET["ema"]) ;
+
+                $usuario->insert() ;
+                header("location: index.php?mod=anime&ope=index") ;
+            else:
+                require_once "view/create.usuario.php" ;
+            endif;
+        }
+    }

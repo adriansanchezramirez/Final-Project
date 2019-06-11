@@ -9,7 +9,7 @@ $ope = $_GET["ope"]??"index";
 
 
 
-require_once "controlador/controller.$mod.php" ;
+require_once "controller/controller.$mod.php" ;
 
 $nme = "controller$mod" ;
 
