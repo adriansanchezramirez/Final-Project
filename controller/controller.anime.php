@@ -16,9 +16,15 @@ class controllerAnime{
             require_once "view/index.anime.php" ;
         }
 
-        public function aniadir(){
+        public function anime(){
             $datos = Anime::getAllAnime() ;
-            require_once "view/aniadir.anime.php" ;
+            require_once "view/anime.php" ;
+        }
+
+        public function show(){
+            $datos = Anime::getAnimeId($_GET["idAni"]);
+
+            require_once "view/show.anime.php";
         }
 
         public function create()

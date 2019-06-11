@@ -25,7 +25,7 @@ if (isset($_SESSION["email"])){
     <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/sesion.png" alt="" /></a></div>
+          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/registro.png" alt="" /></a></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
@@ -52,14 +52,17 @@ if (isset($_SESSION["email"])){
             <div class="space20"></div>
             <form class="comment-form" id="login-form" action="index.php" method="GET" role="form" style="display: block;">
                 <input id="mod" name="mod" type="hidden" value="user">
-                <input id="ope" name="ope" type="hidden" value="sigin">
+                <input id="ope" name="ope" type="hidden" value="create">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Nombre">
+                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
                 </div>
-                <button type="submit" class="btn">Iniciar Sesión</button>
+                <button type="submit" class="btn">Registrarse</button>
             </form>
               <!-- /.post -->
             </div>

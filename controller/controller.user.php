@@ -15,7 +15,7 @@ require_once "model/Sesion.php" ;
         
             
             if(isset($_SESSION["email"])){
-                header("Location: index.php?mod=anime&ope=aniadir");
+                header("Location: index.php?mod=anime&ope=anime");
             }
             
             if($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -40,7 +40,7 @@ require_once "model/Sesion.php" ;
                     if ($resultado== false) {
                         $_SESSION["email"]=$email;
                         // $_SESSION["id"]=$id;
-                        header("Location: index.php?mod=anime&ope=aniadir");
+                        header("Location: index.php?mod=anime&ope=anime");
                         
                     }else{
                         require_once "view/login.php";
@@ -62,16 +62,16 @@ require_once "model/Sesion.php" ;
 
         public function create()
         {
-            if(isset($_GET["nom"])):
+            if(isset($_GET["name"])):
                 $usuario = new Usuario();
-                $usuario->setNombre($_GET["nom"]) ;
-                $usuario->setPassword($_GET["pass"]) ;
-                $usuario->setEmail($_GET["ema"]) ;
+                $usuario->setName($_GET["name"]) ;
+                $usuario->setPassword($_GET["password"]) ;
+                $usuario->setEmail($_GET["email"]) ;
 
                 $usuario->insert() ;
                 header("location: index.php?mod=anime&ope=index") ;
             else:
-                require_once "view/create.usuario.php" ;
+                require_once "view/create.user.php" ;
             endif;
         }
     }

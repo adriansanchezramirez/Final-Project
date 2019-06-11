@@ -1,4 +1,5 @@
 <?php  
+//iniciamos session
 $sesion=session_start();
 if (isset($_SESSION["email"])){
 	header("Location: index.php?mod=anime&ope=aniadir");
@@ -25,14 +26,13 @@ if (isset($_SESSION["email"])){
     <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/sesion.png" alt="" /></a></div>
+          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/anime.png" alt="" /></a></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
             <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
-              <!--/.dropdown-menu -->
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
             </li>
@@ -49,27 +49,68 @@ if (isset($_SESSION["email"])){
         <div class="row">
           <div class="col-md-8">
             <div class="blog grid grid-view boxed boxed-classic-view">
-            <div class="space20"></div>
-            <form class="comment-form" id="login-form" action="index.php" method="GET" role="form" style="display: block;">
-                <input id="mod" name="mod" type="hidden" value="user">
-                <input id="ope" name="ope" type="hidden" value="sigin">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+            <?php
+                foreach($datos as $item){
+            ?>
+              <div class="post">
+                <div class="box bg-white shadow">
+                  <figure class="main mb-30 overlay overlay1 rounded"><a href="#"> <img width="260px" height="370px" src="<?=$item->getCover();?>"> /></a>
+                    <figcaption>
+                      <h5 class="text-uppercase from-top mb-0">Leer más</h5>
+                    </figcaption>
+                  </figure>
+                  <div class="meta mb-10"><span class="category"><a href="#" class="hover color"><?=$item->getCategory();?></a></span></div>
+                  <h2 class="post-title"><a href="blog-post.html"><?=$item->getName();?></a></h2>
+                  <div class="post-content">
+                    <p><?=$item->getDescription();?></p>
+                  </div>
+                  <!-- /.post-content -->
+                  <hr />
+                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span class="comments"><a href="#">3</a></span></div>
                 </div>
-                <div class="form-group">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
-                </div>
-                <button type="submit" class="btn">Iniciar Sesión</button>
-            </form>
+                <!-- /.box -->
+              </div>
+            <?php
+                }
+            ?>
               <!-- /.post -->
             </div>
             <!-- /.blog -->
-
+            <div class="pagination bg">
+              <ul>
+                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
+                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
+                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
+                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
+                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
+              </ul>
+            </div>
+            <!-- /.pagination -->
           </div>
-                    
+
+          
           <!--/column -->
           <aside class="col-md-4 sidebar">
-
+          
+          <div class="sidebox widget">
+            <h3 class="widget-title">Buscador</h3>
+            <form class="search-form">
+              <div class="form-group">
+                <input type="text" class="form-control" >
+              </div>
+              <!-- /.form-group -->
+            </form>
+            <!-- /.search-form -->
+          </div>
+            <!-- /.widget -->
+            <div class="sidebox widget">
+              <h3 class="widget-title">Categorias</h3>
+              <ul class="unordered-list">
+                <li><a href="#">Series</a></li>
+                <li><a href="#">Peliculas</a></li>
+                <li><a href="#">OVA´s</a></li>
+              </ul>
+            </div>
             <!-- /.widget -->
             <div class="sidebox widget">
               <h3 class="widget-title">Sobre el Autor</h3>

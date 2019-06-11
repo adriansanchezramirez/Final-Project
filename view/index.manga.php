@@ -33,13 +33,12 @@ if (isset($_SESSION["email"])){
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
             <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
-              <!--/.dropdown-menu -->
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Iniciar Sesión</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=sigin">Iniciar Sesión</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=create">Registrarse</a>
             </li>
           </ul>
         </div>

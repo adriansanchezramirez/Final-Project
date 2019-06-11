@@ -26,20 +26,19 @@ if (isset($_SESSION["email"])){
     <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/logo.png" alt="" /></a></div>
+          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/anime.png" alt="" /></a></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
             <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
-              <!--/.dropdown-menu -->
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=sigin">Iniciar Sesión</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=create">Registrarse</a>
             </li>
           </ul>
         </div>
@@ -55,7 +54,7 @@ if (isset($_SESSION["email"])){
             ?>
               <div class="post">
                 <div class="box bg-white shadow">
-                  <figure class="main mb-30 overlay overlay1 rounded"><a href="#"> <img width="260px" height="370px" src="<?=$item->getCover();?>"> /></a>
+                  <figure class="main mb-30 overlay overlay1 rounded"><a href="index.php?mod=anime&ope=show&idAni=<?=$item->getIdAni();?>"> <img width="260px" height="370px" src="<?=$item->getCover();?>"> /></a>
                     <figcaption>
                       <h5 class="text-uppercase from-top mb-0">Leer más</h5>
                     </figcaption>

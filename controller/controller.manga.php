@@ -16,10 +16,10 @@ class controllerManga{
             require_once "view/index.manga.php" ;
         }
 
-        // public function aniadir(){
-        //     $datos = Manga::getAllAnime() ;
-        //     require_once "view/aniadir.anime.php" ;
-        // }
+        public function manga(){
+            $datos = Manga::getAllManga() ;
+            require_once "view/manga.php" ;
+        }
 
         public function create()
         {

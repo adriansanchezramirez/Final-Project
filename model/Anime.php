@@ -77,12 +77,26 @@ class Anime {
         
         public static function getAnime($id) {
 			$bd = Database::getInstance() ;
-			$bd->doQuery("SELECT * FROM anime WHERE idAni=:ida ;",
-				[ ":ida" => $id ]) ;
+			$bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni ;",
+				[ ":idAni" => $id ]) ;
 
 			return $bd->getRow("Anime") ;
 		}
     
+        public static function getAnimeId($idAni){
+
+            $bd = new Database;
+            $bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni;", [":idAni"=>$idAni]);
+
+            $datos = [];
+
+            while($item = $bd->getRow("Anime")){
+                array_push($datos,$item);
+            }
+
+            return $datos;
+        }
+
 }
 
 ?>
