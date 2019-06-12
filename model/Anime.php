@@ -45,57 +45,95 @@ class Anime {
         return $datos;
     }
 
-    
-        public function insert(){
-            $bd = Database::getInstance();
-            $bd->doQuery("INSERT INTO anime(name, episode, category, description, cover) VALUES (:name, :episode, :category, :description, :cover);",
+    public static function getAllSerie(){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT * FROM anime WHERE category = 'Serie' ORDER BY name;") ;
+
+        $datos = [] ;
+
+        while($item = $bd->getRow("Anime")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+
+    public static function getAllPelicula(){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT * FROM anime WHERE category = 'Película' ORDER BY name;") ;
+
+        $datos = [] ;
+
+        while($item = $bd->getRow("Anime")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+
+    public static function getAllOva(){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT * FROM anime WHERE category = 'OVA' ORDER BY name;") ;
+
+        $datos = [] ;
+
+        while($item = $bd->getRow("Anime")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+
+    public function insert(){
+        $bd = Database::getInstance();
+        $bd->doQuery("INSERT INTO anime(name, episode, category, description, cover) VALUES (:name, :episode, :category, :description, :cover);",
+        [":name"=>$this->name,
+            ":episode"=>$this->episode,
+            ":category"=>$this->category,
+            ":description"=>$this->description,
+            ":cover"=>$this->cover]) ;
+    }
+
+
+    public function delete($id){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("DELETE FROM anime WHERE idAni=:ida ;",
+            [ ":ida" => $id ]) ;
+    }
+
+    public function update()
+    {
+        $bd = Database::getInstance() ;
+        $bd->doQuery("UPDATE anime SET name=:name, episode=:episode, category=:category, description=:description, cover=:cover WHERE idAni=:ida ;",
             [":name"=>$this->name,
-             ":episode"=>$this->episode,
-             ":category"=>$this->category,
-             ":description"=>$this->description,
-             ":cover"=>$this->cover]) ;
-        }
+                ":episode"=>$this->episode,
+                ":category"=>$this->category,
+                ":description"=>$this->description,
+                ":cover"=>$this->cover,
+                ":ida"=>$this->idAni]) ;
+    } 
     
+    public static function getAnime($id) {
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni ;",
+            [ ":idAni" => $id ]) ;
 
-        public function delete($id){
-            $bd = Database::getInstance() ;
-			$bd->doQuery("DELETE FROM anime WHERE idAni=:ida ;",
-				[ ":ida" => $id ]) ;
+        return $bd->getRow("Anime") ;
+    }
+
+    public static function getAnimeId($idAni){
+
+        $bd = new Database;
+        $bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni;", [":idAni"=>$idAni]);
+
+        $datos = [];
+
+        while($item = $bd->getRow("Anime")){
+            array_push($datos,$item);
         }
-  
-        public function update()
-		{
-			$bd = Database::getInstance() ;
-			$bd->doQuery("UPDATE anime SET name=:name, episode=:episode, category=:category, description=:description, cover=:cover WHERE idAni=:ida ;",
-				[":name"=>$this->name,
-                 ":episode"=>$this->episode,
-                 ":category"=>$this->category,
-                 ":description"=>$this->description,
-                 ":cover"=>$this->cover,
-                 ":ida"=>$this->idAni]) ;
-        } 
-        
-        public static function getAnime($id) {
-			$bd = Database::getInstance() ;
-			$bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni ;",
-				[ ":idAni" => $id ]) ;
 
-			return $bd->getRow("Anime") ;
-		}
-    
-        public static function getAnimeId($idAni){
-
-            $bd = new Database;
-            $bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni;", [":idAni"=>$idAni]);
-
-            $datos = [];
-
-            while($item = $bd->getRow("Anime")){
-                array_push($datos,$item);
-            }
-
-            return $datos;
-        }
+        return $datos;
+    }
 
 }
 

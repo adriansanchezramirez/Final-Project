@@ -21,6 +21,21 @@ class controllerAnime{
             require_once "view/anime.php" ;
         }
 
+        public function serie(){
+            $datos = Anime::getAllSerie() ;
+            require_once "view/anime.serie.php" ;
+        }
+
+        public function pelicula(){
+            $datos = Anime::getAllPelicula() ;
+            require_once "view/anime.pelicula.php" ;
+        }
+
+        public function ova(){
+            $datos = Anime::getAllOva() ;
+            require_once "view/anime.ova.php" ;
+        }
+
         public function show(){
             $datos = Anime::getAnimeId($_GET["idAni"]);
 
