@@ -1,8 +1,8 @@
 <?php  
 //iniciamos session
 $sesion=session_start();
-if (isset($_SESSION["email"])){
-	header("Location: index.php?mod=anime&ope=aniadir");
+if (!isset($_SESSION["email"])){
+	header("Location: index.php?mod=anime&ope=index");
 }
 ?>
 <!DOCTYPE html>
@@ -32,13 +32,13 @@ if (isset($_SESSION["email"])){
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
-            <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
+            <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=anime">Lista de Anime</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=manga">Lista de Manga</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=sigin">Iniciar Sesión</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=create">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="">Mis Listas</a>
             </li>
           </ul>
         </div>
@@ -54,13 +54,10 @@ if (isset($_SESSION["email"])){
             ?>
               <div class="post">
                 <div class="box bg-white shadow">
-                  <figure class="main mb-30 overlay overlay1 rounded"><a href="#"> <img width="260px" height="370px" src="<?=$item->getCover();?>"> /></a>
-                    <figcaption>
-                      <h5 class="text-uppercase from-top mb-0">Leer más</h5>
-                    </figcaption>
+                  <figure class="main mb-30 overlay overlay1 rounded"><img width="260px" height="370px" src="<?=$item->getCover();?>">
                   </figure>
-                  <div class="meta mb-10"><span class="category"><a href="#" class="hover color"><?=$item->getCategory();?></a></span></div>
-                  <h2 class="post-title"><a href="blog-post.html"><?=$item->getName();?></a></h2>
+                  <div class="meta mb-10"><span class="category"><?=$item->getCategory();?></span></div>
+                  <h2 class="post-title"><?=$item->getName();?></h2>
                   <div class="post-content">
                     <p><?=$item->getDescription();?></p>
                   </div>
@@ -76,49 +73,16 @@ if (isset($_SESSION["email"])){
               <!-- /.post -->
             </div>
             <!-- /.blog -->
-            <div class="pagination bg">
-              <ul>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
-                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
-              </ul>
-            </div>
-            <!-- /.pagination -->
           </div>
-
-          
           <!--/column -->
           <aside class="col-md-4 sidebar">
-          
-          <div class="sidebox widget">
-            <h3 class="widget-title">Buscador</h3>
-            <form class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control" >
-              </div>
-              <!-- /.form-group -->
-            </form>
-            <!-- /.search-form -->
-          </div>
-            <!-- /.widget -->
-            <div class="sidebox widget">
-              <h3 class="widget-title">Categorias</h3>
-              <ul class="unordered-list">
-                <li><a href="#">Series</a></li>
-                <li><a href="#">Peliculas</a></li>
-                <li><a href="#">OVA´s</a></li>
-              </ul>
-            </div>
-            <!-- /.widget -->
             <div class="sidebox widget">
               <h3 class="widget-title">Sobre el Autor</h3>
                 <p>A continuación dejo un enlace a mis redes sociales para poder conocer mi obra un poco mejor</p>
               <ul class="social social-color social-s">
                 <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
@@ -142,9 +106,9 @@ if (isset($_SESSION["email"])){
           <!--/column -->
           <div class="col-md-4 text-center text-md-right">
             <ul class="social social-mute social-s mt-10">
-              <li><a href="https://twitter.com/AdrianKyoya"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3"><i class="fa fa-facebook-f"></i></a></li>
-              <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
           <!--/column -->

@@ -26,7 +26,7 @@ if (!isset($_SESSION["email"])){
     <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand">><img src="#" srcset="assets/logo.png" alt="" /></div>
+          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
@@ -39,7 +39,7 @@ if (!isset($_SESSION["email"])){
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="">Mis Listas</a>
             </li>
           </ul>
         </div>
@@ -55,19 +55,19 @@ if (!isset($_SESSION["email"])){
             ?>
               <div class="post">
                 <div class="box bg-white shadow">
-                  <figure class="main mb-30 overlay overlay1 rounded"><a href="#"> <img width="260px" height="370px" src="<?=$item->getCover();?>"> /></a>
+                  <figure class="main mb-30 overlay overlay1 rounded"><a href="index.php?mod=anime&ope=show&idAni=<?=$item->getIdAni();?>"> <img width="260px" height="370px" src="<?=$item->getCover();?>"></a>
                     <figcaption>
                       <h5 class="text-uppercase from-top mb-0">Leer más</h5>
-                    </figcaption>
+                    </figcaption> 
                   </figure>
-                  <div class="meta mb-10"><span class="category"><a href="#" class="hover color"><?=$item->getCategory();?></a></span></div>
-                  <h2 class="post-title"><a href="blog-post.html"><?=$item->getName();?></a></h2>
+                  <div class="meta mb-10"><span class="category"><?=$item->getCategory();?></span></div>
+                  <h2 class="post-title"><a href="index.php?mod=anime&ope=show&idAni=<?=$item->getIdAni();?>"><?=$item->getName();?></a></h2>
                   <div class="post-content">
                     <p><?=$item->getDescription();?></p>
                   </div>
                   <!-- /.post-content -->
                   <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span class="comments"><a href="#">3</a></span></div>
+                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span> <span><a href="index.php?mod=lista&ope=create&idAni=<?=$item->getIdAni();?>&idUsu=<?php echo $_SESSION['idUsu'];?>"> Añadir</a></span><span class="comments"><a href="#">3</a></span></div>
                 </div>
                 <!-- /.box -->
               </div>
@@ -119,7 +119,7 @@ if (!isset($_SESSION["email"])){
               <ul class="social social-color social-s">
                 <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
@@ -143,9 +143,9 @@ if (!isset($_SESSION["email"])){
           <!--/column -->
           <div class="col-md-4 text-center text-md-right">
             <ul class="social social-mute social-s mt-10">
-              <li><a href="https://twitter.com/AdrianKyoya"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3"><i class="fa fa-facebook-f"></i></a></li>
-              <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
           <!--/column -->

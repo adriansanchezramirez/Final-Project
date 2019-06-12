@@ -26,7 +26,7 @@ if (isset($_SESSION["email"])){
     <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/manga.png" alt="" /></a></div>
+          <div class="navbar-brand"><img  srcset="assets/manga.png" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
@@ -54,13 +54,9 @@ if (isset($_SESSION["email"])){
             ?>
               <div class="post">
                 <div class="box bg-white shadow">
-                  <figure class="main mb-30 overlay overlay1 rounded"><a href="#"> <img width="260px" height="370px" src="<?=$item->getCover();?>"> /></a>
-                    <figcaption>
-                      <h5 class="text-uppercase from-top mb-0">Leer más</h5>
-                    </figcaption>
+                  <figure class="main mb-30 overlay overlay1 rounded"><img width="260px" height="370px" src="<?=$item->getCover();?>">
                   </figure>
-                  <div class="meta mb-10"><span class="category"><a href="#" class="hover color"></a></span></div>
-                  <h2 class="post-title"><a href="blog-post.html"><?=$item->getTitle();?></a></h2>
+                  <h2 class="post-title"><?=$item->getTitle();?></h2>
                   <div class="post-content">
                     <p><?=$item->getDescription();?></p>
                   </div>
@@ -109,7 +105,7 @@ if (isset($_SESSION["email"])){
               <ul class="social social-color social-s">
                 <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
@@ -133,9 +129,9 @@ if (isset($_SESSION["email"])){
           <!--/column -->
           <div class="col-md-4 text-center text-md-right">
             <ul class="social social-mute social-s mt-10">
-              <li><a href="https://twitter.com/AdrianKyoya"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3"><i class="fa fa-facebook-f"></i></a></li>
-              <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
           <!--/column -->

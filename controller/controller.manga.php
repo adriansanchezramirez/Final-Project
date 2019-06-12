@@ -21,6 +21,12 @@ class controllerManga{
             require_once "view/manga.php" ;
         }
 
+        public function show(){
+            $datos = Manga::getMangaId($_GET["idMan"]);
+
+            require_once "view/show.manga.php";
+        }
+
         public function create()
         {
             if(isset($_GET["title"])):

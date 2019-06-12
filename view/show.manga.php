@@ -1,8 +1,8 @@
 <?php  
 //iniciamos session
 $sesion=session_start();
-if (isset($_SESSION["email"])){
-	header("Location: index.php?mod=anime&ope=aniadir");
+if (!isset($_SESSION["email"])){
+	header("Location: index.php?mod=anime&ope=index");
 }
 ?>
 <!DOCTYPE html>
@@ -26,19 +26,19 @@ if (isset($_SESSION["email"])){
     <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
+          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/anime.png" alt="" /></a></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
-            <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
+            <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=anime">Lista de Anime</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=manga">Lista de Manga</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=sigin">Iniciar Sesión</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=create">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="">Mis Listas</a>
             </li>
           </ul>
         </div>
@@ -56,8 +56,7 @@ if (isset($_SESSION["email"])){
                 <div class="box bg-white shadow">
                   <figure class="main mb-30 overlay overlay1 rounded"><img width="260px" height="370px" src="<?=$item->getCover();?>">
                   </figure>
-                  <div class="meta mb-10"><span class="category"><?=$item->getCategory();?></span></div>
-                  <h2 class="post-title"><?=$item->getName();?></h2>
+                  <h2 class="post-title"><?=$item->getTitle();?></h2>
                   <div class="post-content">
                     <p><?=$item->getDescription();?></p>
                   </div>
@@ -73,33 +72,9 @@ if (isset($_SESSION["email"])){
               <!-- /.post -->
             </div>
             <!-- /.blog -->
-            <div class="pagination bg">
-              <ul>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
-                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
-              </ul>
-            </div>
-            <!-- /.pagination -->
           </div>
-
-          
           <!--/column -->
           <aside class="col-md-4 sidebar">
-          
-          <div class="sidebox widget">
-            <h3 class="widget-title">Buscador</h3>
-            <form class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control" >
-              </div>
-              <!-- /.form-group -->
-            </form>
-            <!-- /.search-form -->
-          </div>
-            <!-- /.widget -->
             <div class="sidebox widget">
               <h3 class="widget-title">Sobre el Autor</h3>
                 <p>A continuación dejo un enlace a mis redes sociales para poder conocer mi obra un poco mejor</p>

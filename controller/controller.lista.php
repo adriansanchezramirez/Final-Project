@@ -1,19 +1,21 @@
 <?php
-require_once "modelo/ListaAnime.php" ;
+
+require_once "model/ListaAnime.php" ;
 
 class controllerLista{
 
     public function __construct(){}
 
     public function create(){
-        if(isset($_GET["idu"])):
+        if(isset($_GET["idUsu"])):
             $lista = new ListaAnime();
-            $lista->setIdUsu($_GET["idu"]) ;
-            $lista->setIdAni($_GET["ida"]) ;
+            $lista->setIdUsu($_GET["idUsu"]) ;
+            $lista->setIdAni($_GET["idAni"]) ;
 
             $lista->insert() ;
+            header("Location: index.php?mod=anime&ope=anime");
         else:
-            require_once "vista/aniadir.anime.php" ;
+            require_once "view/anime.php" ;
         endif;
     }
 

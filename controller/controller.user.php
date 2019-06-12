@@ -13,14 +13,11 @@ require_once "model/Sesion.php" ;
         
         public function sigin(){
         
-            
             if(isset($_SESSION["email"])){
                 header("Location: index.php?mod=anime&ope=anime");
             }
             
             if($_SERVER["REQUEST_METHOD"] == "GET") {
-
-                
 
                 if(isset($_GET["email"]) && isset($_GET["password"])){
                     $email   = $_GET["email"];
@@ -28,18 +25,16 @@ require_once "model/Sesion.php" ;
                 
                     $db = Database::getInstance();
 
-                    $db->doQuery("SELECT * FROM user WHERE email=:email AND password=:password;",
-                                    [":email" => $email,
-                                        ":password" => $password]);
+                    $db->doQuery("SELECT * FROM users WHERE email=:email AND password=:password",
+                        [":email" => $email,
+                        ":password" => $password]);
             
                     $resultado = $db->getRow();
                     $this->sesion->init();
                     
-                    
-                    
-                    if ($resultado== false) {
+                    if ($resultado) {
                         $_SESSION["email"]=$email;
-                        // $_SESSION["id"]=$id;
+                        $_SESSION["idUsu"]=$resultado->idUsu;
                         header("Location: index.php?mod=anime&ope=anime");
                         
                     }else{

@@ -44,40 +44,54 @@ class Manga {
     }
 
     
-        public function insert(){
-            $bd = Database::getInstance();
-            $bd->doQuery("INSERT INTO manga(title, episode, category, description, cover) VALUES (:title, :episode, :description, :cover);",
+    public function insert(){
+        $bd = Database::getInstance();
+        $bd->doQuery("INSERT INTO manga(title, episode, category, description, cover) VALUES (:title, :episode, :description, :cover);",
+        [":title"=>$this->title,
+            ":episode"=>$this->episode,
+            ":description"=>$this->description,
+            ":cover"=>$this->cover]) ;
+    }
+
+
+    public function delete($id){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("DELETE FROM manga WHERE idMan=:idMan ;",
+            [ ":idMan" => $id ]) ;
+    }
+
+    public function update()
+    {
+        $bd = Database::getInstance() ;
+        $bd->doQuery("UPDATE manga SET title=:title, episode=:episode, description=:description, cover=:cover WHERE idMan=:idMan ;",
             [":title"=>$this->title,
-             ":episode"=>$this->episode,
-             ":description"=>$this->description,
-             ":cover"=>$this->cover]) ;
-        }
+                ":episode"=>$this->episode,
+                ":description"=>$this->description,
+                ":cover"=>$this->cover,
+                ":idMan"=>$this->idMan]) ;
+    } 
     
+    public static function getManga($id) {
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT * FROM manga WHERE idMan=:ida ;",
+            [ ":ida" => $id ]) ;
 
-        public function delete($id){
-            $bd = Database::getInstance() ;
-			$bd->doQuery("DELETE FROM manga WHERE idMan=:idMan ;",
-				[ ":idMan" => $id ]) ;
+        return $bd->getRow("Manga") ;
+    }
+    
+    public static function getMangaId($idMan){
+
+        $bd = new Database;
+        $bd->doQuery("SELECT * FROM manga WHERE idMan=:idMan;", [":idMan"=>$idMan]);
+
+        $datos = [];
+
+        while($item = $bd->getRow("Manga")){
+            array_push($datos,$item);
         }
-  
-        public function update()
-		{
-			$bd = Database::getInstance() ;
-			$bd->doQuery("UPDATE manga SET title=:title, episode=:episode, description=:description, cover=:cover WHERE idMan=:idMan ;",
-				[":title"=>$this->title,
-                 ":episode"=>$this->episode,
-                 ":description"=>$this->description,
-                 ":cover"=>$this->cover,
-                 ":idMan"=>$this->idMan]) ;
-        } 
-        
-        public static function getManga($id) {
-			$bd = Database::getInstance() ;
-			$bd->doQuery("SELECT * FROM manga WHERE idMan=:ida ;",
-				[ ":ida" => $id ]) ;
 
-			return $bd->getRow("Manga") ;
-		}
+        return $datos;
+    }
     
 }
 
