@@ -19,8 +19,8 @@ class Anime {
     public function setIdAni($dta)       {$this->idAni = $dta;}
     public function setName($dta)      {$this->name = $dta;}
     public function setEpisode($dta)        {$this->episode = $dta;}
-    public function setCategoryy($dta)   {$this->category = $dta;}
-    public function setDescription($dta) {$this->description¡ = $dta;}
+    public function setCategory($dta)   {$this->category = $dta;}
+    public function setDescription($dta) {$this->description = $dta;}
     public function setCover($dta)    {$this->cover = $dta;}
     public function setStart_Date($dta)    {$this->start_date = $dta;}
 
@@ -28,8 +28,8 @@ class Anime {
     public function getIdAni()       {return $this->idAni;}
     public function getName()      {return $this->name;}
     public function getEpisode()        {return $this->episode;}
-    public function getcategory()   {return $this->category;}
-    public function getdescription() {return $this->description;}
+    public function getCategory()   {return $this->category;}
+    public function getDescription() {return $this->description;}
     public function getCover()    {return $this->cover;}
     public function getStart_Date()    {return $this->start_date;}
 
@@ -87,37 +87,38 @@ class Anime {
 
     public function insert(){
         $bd = Database::getInstance();
-        $bd->doQuery("INSERT INTO anime(name, episode, category, description, cover) VALUES (:name, :episode, :category, :description, :cover);",
-        [":name"=>$this->name,
+        $bd->doQuery("INSERT INTO anime(name, episode, category, description, start_date, cover) VALUES (:name, :episode, :category, :description, :start_date, :cover);",
+            [":name"=>$this->name,
             ":episode"=>$this->episode,
             ":category"=>$this->category,
             ":description"=>$this->description,
+            ":start_date"=>$this->description,
             ":cover"=>$this->cover]) ;
     }
 
 
-    public function delete($id){
+    public function delete($idAni){
         $bd = Database::getInstance() ;
-        $bd->doQuery("DELETE FROM anime WHERE idAni=:ida ;",
-            [ ":ida" => $id ]) ;
+        $bd->doQuery("DELETE FROM anime WHERE idAni=:idAni ;",
+            [ ":idAni" => $idAni ]) ;
     }
 
     public function update()
     {
         $bd = Database::getInstance() ;
-        $bd->doQuery("UPDATE anime SET name=:name, episode=:episode, category=:category, description=:description, cover=:cover WHERE idAni=:ida ;",
+        $bd->doQuery("UPDATE anime SET name=:name, episode=:episode, category=:category, description=:description, cover=:cover WHERE idAni=:idAni ;",
             [":name"=>$this->name,
-                ":episode"=>$this->episode,
-                ":category"=>$this->category,
-                ":description"=>$this->description,
-                ":cover"=>$this->cover,
-                ":ida"=>$this->idAni]) ;
+            ":episode"=>$this->episode,
+            ":category"=>$this->category,
+            ":description"=>$this->description,
+            ":cover"=>$this->cover,
+            ":idAni"=>$this->idAni]) ;
     } 
     
-    public static function getAnime($id) {
+    public static function getAnime($idAni) {
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM anime WHERE idAni=:idAni ;",
-            [ ":idAni" => $id ]) ;
+            [ ":idAni" => $idAni ]) ;
 
         return $bd->getRow("Anime") ;
     }

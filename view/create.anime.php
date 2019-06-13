@@ -1,68 +1,142 @@
 <?php  
-//iniciamos session
 $sesion=session_start();
-if (!isset($_SESSION["nombre"])){
-	header("Location: index.php?mod=anime&ope=index");
+if (!isset($_SESSION["email"])){
+	header("Location: index.php?mod=anime&ope=anime");
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Crear Nuevos Usuarios</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/estilo.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/favicon.png">
+  <title>Lista de Anime</title>
+  <link rel="stylesheet" type="text/css" href="assets/style/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/css/plugins.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/revolution/css/settings.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/revolution/css/layers.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/revolution/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/type/icons.css">
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/css/color/lavender.css">
 </head>
 <body>
-<div id="marco">
-
-            <div id="animelist"><a href="index.php?mod=anime&ope=index">Lista de Anime</a></div>
+  <div class="content-wrapper">
+  <nav class="navbar center navbar-expand-lg">
+      <div class="container flex-lg-column">
+        <div class="navbar-header">
+          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
+          <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
-        
-
-        <div class="panel panel-login">
-    <div class="panel-heading">
-    <h1>Registrando Nuevo Anime</h1><br>
-    
-    </div>
-    <div class="panel-body">
+        <!-- /.navbar-header -->
+        <div class="navbar-collapse collapse w-100 bg-light">
+          <ul class="navbar-nav nav-fill w-100">
+            <li class="nav-item"><a class="nav-link">Anime</a>
+            <ul class="dropdown-menu">
+              <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=admin">Lista de Anime</a></li>
+              <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=create">Crear Nuevo Anime</a></li>
+            </ul>
+            </li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Manga</a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=manga&ope=admin">Lista de Manga</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=manga&ope=create">Crear Nuevo Manga</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="wrapper light-wrapper">
+      <div class="container inner pt-60">
         <div class="row">
-            <div class="col-lg-12">
-                <form id="login-form" action="index.php" method="GET" role="form" style="display: block;">
-                <input id="mod" name="mod" type="hidden" value="anime">
-                <input id="ope" name="ope" type="hidden" value="create">
-                    <div class="form-group">
-                        <input type="text" name="nom" id="nom" tabindex="1" class="form-control" placeholder="Nombre" value="">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="nepi" id="nepii" tabindex="1" class="form-control" placeholder="Episodios" value="">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="cat" id="cat" tabindex="1" class="form-control" placeholder="Categoria" value="">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="descr" id="descr" tabindex="1" class="form-control" placeholder="Descripción" value="">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="car" id="car" tabindex="1" class="form-control" placeholder="Ruta de la Caratula" value="">
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6 col-sm-offset-3">
-                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Agregar">
-                            </div>
-                        </div>
-                    </div>
+          <div class="col-md-8">
+            <div class="blog grid grid-view boxed boxed-classic-view">
+            <div class="space20"></div>
+            <form class="comment-form" id="login-form" action="index.php" method="GET" role="form" style="display: block;">
+              <input id="mod" name="mod" type="hidden" value="anime">
+              <input id="ope" name="ope" type="hidden" value="create">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" value="">
                 </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="episode" id="episode" placeholder="Número de Episodios" value="">
                 </div>
-            </div>
-            </div>
-
+                <div class="form-group">
+                    <input type="text" class="form-control" name="category" id="category" placeholder="Categoria" value="">
+                </div>
+                <div class="form-group">
+                    <textarea name="description" class="form-control" id="description" rows="5"  placeholder="Escribe aquí la descripción ..."></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" name="start_date" id="start_date" value="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="cover" id="cover" placeholder="URL de la Caratula" value="">
+                </div>
+                <button type="submit" class="btn">Añadir</button>
             </form>
+              <!-- /.post -->
+            </div>
+            <!-- /.blog -->
+
+          </div>
+                    
+          <!--/column -->
+          <aside class="col-md-4 sidebar">
+
+            <!-- /.widget -->
+            <div class="sidebox widget">
+              <h3 class="widget-title">Sobre el Autor</h3>
+                <p>A continuación dejo un enlace a mis redes sociales para poder conocer mi obra un poco mejor</p>
+              <ul class="social social-color social-s">
+                <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /.widget -->
+          </aside>
+          <!-- /column .sidebar -->
+        </div>
+        <!--/.row -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.wrapper -->
+    <footer class="dark-wrapper inverse-text">
+      <div class="container inner">
+        <div class="row d-md-flex align-items-md-center">
+          <div class="col-md-4 text-center text-md-left">
+            <p class="mb-0">© 2019 . Todos los derechos reservados.</p>
+          </div>
+          <!--/column -->
+          <div class="col-md-4 text-center"></div>
+          <!--/column -->
+          <div class="col-md-4 text-center text-md-right">
+            <ul class="social social-mute social-s mt-10">
+              <li><a href="https://twitter.com/AdrianKyoya"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3"><i class="fa fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+          <!--/column -->
+        </div>
+        <!--/.row -->
+      </div>
+      <!-- /.container -->
+    </footer>
+  </div>
+  <!-- /.content-wrapper -->
+  <script src="assets/style/js/jquery.min.js"></script>
+  <script src="assets/style/js/popper.min.js"></script>
+  <script src="assets/style/js/bootstrap.min.js"></script>
+  <script src="assets/style/revolution/js/jquery.themepunch.tools.min.js"></script>
+  <script src="assets/style/revolution/js/jquery.themepunch.revolution.min.js"></script>
+  <script src="assets/style/js/plugins.js"></script>
+  <script src="assets/style/js/scripts.js"></script>
 </body>
 </html>

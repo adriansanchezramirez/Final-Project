@@ -6,7 +6,6 @@ class Manga {
     private $idMan ;
     private $title ;
     private $episode ;
-    private $category ;
     private $description ;
     private $cover ;
 
@@ -18,7 +17,7 @@ class Manga {
     public function setIdMan($dta)       {$this->idMan = $dta;}
     public function setTitle($dta)      {$this->title = $dta;}
     public function setEpisode($dta)        {$this->episode = $dta;}
-    public function setdescriptioniption($dta) {$this->description¡ = $dta;}
+    public function setDescription($dta) {$this->description = $dta;}
     public function setCover($dta)    {$this->cover = $dta;}
 
 
@@ -46,7 +45,7 @@ class Manga {
     
     public function insert(){
         $bd = Database::getInstance();
-        $bd->doQuery("INSERT INTO manga(title, episode, category, description, cover) VALUES (:title, :episode, :description, :cover);",
+        $bd->doQuery("INSERT INTO manga(title, episode, description, cover) VALUES (:title, :episode, :description, :cover);",
         [":title"=>$this->title,
             ":episode"=>$this->episode,
             ":description"=>$this->description,
@@ -54,10 +53,10 @@ class Manga {
     }
 
 
-    public function delete($id){
+    public function delete($idMan){
         $bd = Database::getInstance() ;
         $bd->doQuery("DELETE FROM manga WHERE idMan=:idMan ;",
-            [ ":idMan" => $id ]) ;
+            [ ":idMan" => $idMan ]) ;
     }
 
     public function update()
@@ -71,10 +70,10 @@ class Manga {
                 ":idMan"=>$this->idMan]) ;
     } 
     
-    public static function getManga($id) {
+    public static function getManga($idMan) {
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT * FROM manga WHERE idMan=:ida ;",
-            [ ":ida" => $id ]) ;
+        $bd->doQuery("SELECT * FROM manga WHERE idMan=:idMan ;",
+            [ ":idMan" => $idMan ]) ;
 
         return $bd->getRow("Manga") ;
     }

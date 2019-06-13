@@ -21,6 +21,12 @@ class controllerAnime{
             require_once "view/anime.php" ;
         }
 
+        public function admin(){
+
+            $datos = Anime::getAllAnime() ;
+            require_once "view/admin.anime.php" ;
+        }
+
         public function serie(){
             $datos = Anime::getAllSerie() ;
             require_once "view/anime.serie.php" ;
@@ -50,10 +56,11 @@ class controllerAnime{
                 $anime->setEpisode($_GET["episode"]) ;
                 $anime->setCategory($_GET["category"]) ;
                 $anime->setDescription($_GET["description"]) ;
+                $anime->setStart_Date($_GET["start_date"]) ;
                 $anime->setCover($_GET["cover"]) ;
 
                 $anime->insert() ;
-                header("location: index.php?mod=anime&ope=aniadir") ;
+                header("location: index.php?mod=anime&ope=admin") ;
             else:
                 require_once "view/create.anime.php" ;
             endif;
@@ -63,31 +70,31 @@ class controllerAnime{
 			if (isset($_GET["idAni"])) {
 				Anime::delete($_GET["idAni"]) ;
 
-				header("Location: index.php?mod=anime&ope=index");
+				header("Location: index.php?mod=anime&ope=admin");
 			} else {
-				header("Location: index.php?mod=anime&ope=index");
+				header("Location: index.php?mod=anime&ope=admin");
 			}
         }
         
         public function update(){
 			
-			$id = $_GET["idAni"] ?? "" ;
+			$idAni = $_GET["idAni"] ?? "" ;
 
-			if (!empty($id)) {
+			if (!empty($idAni)) {
 
-				$anime = Anime::getAnime($id) ;
+				$anime = Anime::getAnime($idAni) ;
 
 				if (isset($_GET["name"])) {
 
                     $anime->setName($_GET["name"]) ;
                     $anime->setEpisode($_GET["episode"]) ;
                     $anime->setCategory($_GET["category"]) ;
-                    $anime->setDescrption($_GET["description"]) ;
+                    $anime->setDescription($_GET["description"]) ;
                     $anime->setCover($_GET["cover"]) ;
 
 					$anime->update() ;
 
-					header("Location: index.php?mod=anime&ope=index");
+					header("Location: index.php?mod=anime&ope=admin");
 
 				} else {
 					//
@@ -102,7 +109,7 @@ class controllerAnime{
 
 			} else {
 				//
-				header("Location: index.php?mod=anime&ope=index");
+				header("Location: index.php?mod=anime&ope=admin");
 			}
 		}
        

@@ -1,7 +1,7 @@
 <?php  
 //iniciamos session
 $sesion=session_start();
-if (isset($_SESSION["email"])){
+if (!isset($_SESSION["email"])){
 	header("Location: index.php?mod=anime&ope=anime");
 }
 ?>
@@ -23,22 +23,28 @@ if (isset($_SESSION["email"])){
 </head>
 <body>
   <div class="content-wrapper">
-    <nav class="navbar center navbar-expand-lg">
+  <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><img  srcset="assets/manga.png" alt="" /></div>
+          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
-            <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
+            <li class="nav-item"><a class="nav-link">Anime</a>
+            <ul class="dropdown-menu">
+              <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=admin">Lista de Anime</a></li>
+              <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=create">Crear Nuevo Anime</a></li>
+            </ul>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Manga</a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=manga&ope=admin">Lista de Manga</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=manga&ope=create">Crear Nuevo Manga</a></li>
+                </ul>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=sigin">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=create">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
             </li>
           </ul>
         </div>
@@ -62,7 +68,11 @@ if (isset($_SESSION["email"])){
                   </div>
                   <!-- /.post-content -->
                   <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span class="comments"><a href="#">3</a></span></div>
+                  <div class="meta meta-footer d-flex justify-content-between mb-0">
+                    <span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span>
+                    <span><a href="index.php?mod=manga&ope=update&idMan=<?=$item->getIdMan()?>">Actualizar</a> </span>
+                    <span><a href="index.php?mod=manga&ope=delete&idMan=<?=$item->getIdMan()?>">Eliminar</a> </span>
+                  </div>
                 </div>
                 <!-- /.box -->
               </div>

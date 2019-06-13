@@ -1,7 +1,6 @@
 <?php  
-//iniciamos session
 $sesion=session_start();
-if (isset($_SESSION["email"])){
+if (!isset($_SESSION["email"])){
 	header("Location: index.php?mod=anime&ope=anime");
 }
 ?>
@@ -23,22 +22,28 @@ if (isset($_SESSION["email"])){
 </head>
 <body>
   <div class="content-wrapper">
-    <nav class="navbar center navbar-expand-lg">
+  <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><img  srcset="assets/manga.png" alt="" /></div>
+          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
-            <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=index">Lista de Anime</a>
+            <li class="nav-item"><a class="nav-link">Anime</a>
+            <ul class="dropdown-menu">
+              <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=admin">Lista de Anime</a></li>
+              <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=create">Crear Nuevo Anime</a></li>
+            </ul>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=index">Lista de Manga</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Manga</a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=manga&ope=admin">Lista de Manga</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=manga&ope=create">Crear Nuevo Manga</a></li>
+                </ul>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=sigin">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=create">Registrarse</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
             </li>
           </ul>
         </div>
@@ -49,55 +54,33 @@ if (isset($_SESSION["email"])){
         <div class="row">
           <div class="col-md-8">
             <div class="blog grid grid-view boxed boxed-classic-view">
-            <?php
-                foreach($datos as $item){
-            ?>
-              <div class="post">
-                <div class="box bg-white shadow">
-                  <figure class="main mb-30 overlay overlay1 rounded"><img width="260px" height="370px" src="<?=$item->getCover();?>">
-                  </figure>
-                  <h2 class="post-title"><?=$item->getTitle();?></h2>
-                  <div class="post-content">
-                    <p><?=$item->getDescription();?></p>
-                  </div>
-                  <!-- /.post-content -->
-                  <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span class="comments"><a href="#">3</a></span></div>
+            <div class="space20"></div>
+            <form class="comment-form" id="login-form" action="index.php" method="GET" role="form" style="display: block;">
+              <input id="mod" name="mod" type="hidden" value="manga">
+              <input id="ope" name="ope" type="hidden" value="create">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Nombre" value="">
                 </div>
-                <!-- /.box -->
-              </div>
-            <?php
-                }
-            ?>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="episode" id="episode" placeholder="Número de Episodios" value="">
+                </div>
+                <div class="form-group">
+                <textarea name="description" class="form-control" id="description" rows="5"  placeholder="Escribe aquí la descripción ..."><</textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="cover" id="cover" placeholder="URL de la Portada" value="">
+                </div>
+                <button type="submit" class="btn">Añadir</button>
+            </form>
               <!-- /.post -->
             </div>
             <!-- /.blog -->
-            <div class="pagination bg">
-              <ul>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
-                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
-              </ul>
-            </div>
-            <!-- /.pagination -->
-          </div>
 
-          
+          </div>
+                    
           <!--/column -->
           <aside class="col-md-4 sidebar">
-          
-          <div class="sidebox widget">
-            <h3 class="widget-title">Buscador</h3>
-            <form class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control" >
-              </div>
-              <!-- /.form-group -->
-            </form>
-            <!-- /.search-form -->
-          </div>
+
             <!-- /.widget -->
             <div class="sidebox widget">
               <h3 class="widget-title">Sobre el Autor</h3>
@@ -105,7 +88,7 @@ if (isset($_SESSION["email"])){
               <ul class="social social-color social-s">
                 <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
@@ -129,9 +112,9 @@ if (isset($_SESSION["email"])){
           <!--/column -->
           <div class="col-md-4 text-center text-md-right">
             <ul class="social social-mute social-s mt-10">
-              <li><a href="https://twitter.com/AdrianKyoya" target="_blank"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
-              <li><a href="https://www.instagram.com/adri_kyoya/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/AdrianKyoya"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.facebook.com/adrian.sanchezramirez.3"><i class="fa fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/adri_kyoya/"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
           <!--/column -->

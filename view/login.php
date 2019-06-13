@@ -1,7 +1,7 @@
 <?php  
 $sesion=session_start();
 if (isset($_SESSION["email"])){
-	header("Location: index.php?mod=anime&ope=aniadir");
+	header("Location: index.php?mod=anime&ope=anime");
 }
 ?>
 <!DOCTYPE html>

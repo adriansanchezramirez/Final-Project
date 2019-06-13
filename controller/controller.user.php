@@ -36,7 +36,7 @@ require_once "model/Sesion.php" ;
                         $_SESSION["email"]=$email;
                         $_SESSION["idUsu"]=$resultado->idUsu;
                         if($resultado->type==0){
-                            header("Location: 404");
+                            header("Location: index.php?mod=anime&ope=admin");
                         }else {
                             header("Location: index.php?mod=anime&ope=anime");
                         }

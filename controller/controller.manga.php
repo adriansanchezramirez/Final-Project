@@ -21,6 +21,11 @@ class controllerManga{
             require_once "view/manga.php" ;
         }
 
+        public function admin(){
+            $datos = Manga::getAllManga() ;
+            require_once "view/admin.manga.php" ;
+        }
+
         public function show(){
             $datos = Manga::getMangaId($_GET["idMan"]);
 
@@ -37,7 +42,7 @@ class controllerManga{
                 $manga->setCover($_GET["cover"]) ;
 
                 $manga->insert() ;
-                header("location: index.php?mod=manga&ope=aniadir") ;
+                header("location: index.php?mod=manga&ope=admin") ;
             else:
                 require_once "view/create.manga.php" ;
             endif;
@@ -47,37 +52,35 @@ class controllerManga{
 			if (isset($_GET["idMan"])) {
 				Manga::delete($_GET["idMan"]) ;
 
-				header("Location: index.php?mod=manga&ope=index");
+				header("Location: index.php?mod=manga&ope=admin");
 			} else {
-				header("Location: index.php?mod=manga&ope=index");
+				header("Location: index.php?mod=manga&ope=admin");
 			}
         }
         
         public function update(){
 			
-			$id = $_GET["idMan"] ?? "" ;
+			$idMan = $_GET["idMan"] ?? "" ;
 
-			if (!empty($id)) {
+			if (!empty($idMan)) {
 
-				$manga = Manga::getManga($id) ;
+				$manga = Manga::getManga($idMan) ;
 
 				if (isset($_GET["title"])) {
 
                     $manga->setTitle($_GET["title"]) ;
                     $manga->setEpisode($_GET["episode"]) ;
-                    $manga->setCategory($_GET["category"]) ;
-                    $manga->setDescrption($_GET["description"]) ;
+                    $manga->setDescription($_GET["description"]) ;
                     $manga->setCover($_GET["cover"]) ;
 
 					$manga->update() ;
 
-					header("Location: index.php?mod=Manga&ope=index");
+					header("Location: index.php?mod=manga&ope=admin");
 
 				} else {
 					//
                     $title = $manga->getTitle() ;
                     $episode = $manga->getEpisode() ;
-                    $category = $manga->getCategory() ;
                     $description = $manga->getDescription() ;
                     $cover = $manga->getCover() ;
 
