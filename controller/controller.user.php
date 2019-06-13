@@ -35,7 +35,11 @@ require_once "model/Sesion.php" ;
                     if ($resultado) {
                         $_SESSION["email"]=$email;
                         $_SESSION["idUsu"]=$resultado->idUsu;
-                        header("Location: index.php?mod=anime&ope=anime");
+                        if($resultado->type==0){
+                            header("Location: 404");
+                        }else {
+                            header("Location: index.php?mod=anime&ope=anime");
+                        }
                         
                     }else{
                         require_once "view/login.php";
@@ -58,7 +62,7 @@ require_once "model/Sesion.php" ;
         public function create()
         {
             if(isset($_GET["name"])):
-                $usuario = new Usuario();
+                $usuario = new User();
                 $usuario->setName($_GET["name"]) ;
                 $usuario->setPassword($_GET["password"]) ;
                 $usuario->setEmail($_GET["email"]) ;
@@ -69,4 +73,20 @@ require_once "model/Sesion.php" ;
                 require_once "view/create.user.php" ;
             endif;
         }
+
+        public function showAnime(){
+
+            $datos = User::animeForUser($_GET["idUsu"]);
+
+            require_once "view/show.listaanime.php";
+        }
+
+        public function showManga(){
+
+            $datos = User::mangaForUser($_GET["idUsu"]);
+
+            require_once "view/show.listamanga.php";
+        }
+
     }
+?>

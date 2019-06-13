@@ -2,6 +2,7 @@
 require_once "Database.php" ;
 
 
+
 class Anime {
     private $idAni ;
     private $name ;
@@ -134,6 +135,8 @@ class Anime {
 
         return $datos;
     }
+
+
 
 }
 

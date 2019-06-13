@@ -1,8 +1,10 @@
 <?php
 
 require_once "Database.php" ;
+require_once "Anime.php" ;
+require_once "Manga.php" ;
 
-    class Usuario{
+    class User{
 
         private $idUsu    ;
         private $name     ;
@@ -34,6 +36,34 @@ require_once "Database.php" ;
              ":email"=>$this->email]) ;
         }
 
-        
+        public static function animeForUser($idUsu){
+
+            $bd = new Database;
+            $bd->doQuery("SELECT * FROM anime JOIN listanime ON listanime.idAni = anime.idAni
+            WHERE idUsu=:idUsu;", [":idUsu"=>$idUsu]);
+    
+            $datos = [];
+    
+            while($item = $bd->getRow("Anime")){
+                array_push($datos,$item);
+            }
+    
+            return $datos;
+        }
+
+        public static function mangaForUser($idUsu){
+
+            $bd = new Database;
+            $bd->doQuery("SELECT * FROM manga JOIN listamanga ON listamanga.idMan = manga.idMan
+            WHERE idUsu=:idUsu;", [":idUsu"=>$idUsu]);
+    
+            $datos = [];
+    
+            while($item = $bd->getRow("Manga")){
+                array_push($datos,$item);
+            }
+    
+            return $datos;
+        }
     }
 ?>

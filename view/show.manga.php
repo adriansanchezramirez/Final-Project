@@ -23,22 +23,32 @@ if (!isset($_SESSION["email"])){
 </head>
 <body>
   <div class="content-wrapper">
-    <nav class="navbar center navbar-expand-lg">
+  <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><a href="index.html"><img src="#" srcset="assets/anime.png" alt="" /></a></div>
+          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
         <div class="navbar-collapse collapse w-100 bg-light">
           <ul class="navbar-nav nav-fill w-100">
             <li class="nav-item"><a class="nav-link" href="index.php?mod=anime&ope=anime">Lista de Anime</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=serie">Series</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=pelicula">Películas</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=anime&ope=ova">OVA´s</a></li>
+              </ul>
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=manga&ope=manga">Lista de Manga</a>
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=user&ope=logout">Cerrar Sesión</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="">Mis Listas</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Mis Listas</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item dropdown"><a class="dropdown-item" href="#">Perfil</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showanime&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Anime</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showmanga&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Manga</a></li>
+              </ul>
             </li>
           </ul>
         </div>
