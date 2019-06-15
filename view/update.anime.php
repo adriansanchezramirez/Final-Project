@@ -10,7 +10,7 @@ if (!isset($_SESSION["email"])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="assets/favicon.png">
-  <title>Lista de Anime</title>
+  <title>Actualizar Anime</title>
   <link rel="stylesheet" type="text/css" href="assets/style/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/style/css/plugins.css">
   <link rel="stylesheet" type="text/css" href="assets/style/revolution/css/settings.css">
@@ -25,7 +25,7 @@ if (!isset($_SESSION["email"])){
   <nav class="navbar center navbar-expand-lg">
       <div class="container flex-lg-column">
         <div class="navbar-header">
-          <div class="navbar-brand"><img srcset="assets/anime.png" alt="" /></div>
+          <div class="navbar-brand"><img srcset="assets/img/aanime.png" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>
         </div>
         <!-- /.navbar-header -->
