@@ -10,7 +10,7 @@ if (!isset($_SESSION["email"])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="assets/favicon.png">
+  <link rel="shortcut icon" href="assets/img/favicon.png">
   <title>Admin de Manga</title>
   <link rel="stylesheet" type="text/css" href="assets/style/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/style/css/plugins.css">
