@@ -17,13 +17,7 @@ class controllerLista{
         else:
             require_once "view/anime.php" ;
         endif;
-    }
-
-    public function index(){
-        $valor = ListaAnime::getallAnimeByUsuario() ;
-        require_once "vista/index.lista.php" ;
-    }
-    
+    }    
     
 }
 

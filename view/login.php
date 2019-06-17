@@ -1,6 +1,6 @@
 <?php  
-$sesion=session_start();
 if (isset($_SESSION["email"])){
+  $sesion=session_start();
 	header("Location: index.php?mod=anime&ope=anime");
 }
 ?>

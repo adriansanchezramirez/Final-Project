@@ -1,6 +1,8 @@
 <?php
 require_once "model/Anime.php" ;
 require_once "model/Sesion.php" ;
+require_once "model/ComentarioAnime.php" ;
+
 
 class controllerAnime{
 
@@ -44,6 +46,8 @@ class controllerAnime{
 
         public function show(){
             $datos = Anime::getAnimeId($_GET["idAni"]);
+
+            $valor = ComentarioAnime::allAnimeComen($_GET["idAni"]);
 
             require_once "view/show.anime.php";
         }

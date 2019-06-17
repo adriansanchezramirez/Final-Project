@@ -1,6 +1,8 @@
 <?php
 require_once "model/Manga.php" ;
 require_once "model/Sesion.php" ;
+require_once "model/ComentarioManga.php" ;
+
 
 class controllerManga{
 
@@ -28,6 +30,8 @@ class controllerManga{
 
         public function show(){
             $datos = Manga::getMangaId($_GET["idMan"]);
+
+            $valor = ComentarioManga::allMangaComen($_GET["idMan"]);
 
             require_once "view/show.manga.php";
         }

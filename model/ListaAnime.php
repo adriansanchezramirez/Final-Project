@@ -24,20 +24,5 @@ class ListaAnime{
          ":ida"=>$this->idAni]) ;
     }
 
-    public static function getallAnimeByUsuario(){
-        $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT * FROM listanime ;") ;
-
-        $valor = [] ;
-
-        while($obj = $bd->getRow("ListaAnime")){
-            array_push($valor,$obj);
-        }
- 
-        return $valor;
-    }
-
-    
-    
     
 }

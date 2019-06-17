@@ -76,7 +76,9 @@ if (!isset($_SESSION["email"])){
                   </div>
                   <!-- /.post-content -->
                   <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span> <span><a href="index.php?mod=lista&ope=create&idAni=<?=$item->getIdAni();?>&idUsu=<?php echo $_SESSION['idUsu'];?>"> Añadir</a></span><span class="comments"><a href="#">3</a></span></div>
+                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span> 
+                  <span><a href="index.php?mod=lista&ope=create&idAni=<?=$item->getIdAni();?>&idUsu=<?php echo $_SESSION['idUsu'];?>"> Añadir</a></span>
+                  <span class="comments"><a href="#">3</a></span></div>
                 </div>
                 <!-- /.box -->
               </div>

@@ -77,9 +77,34 @@ if (!isset($_SESSION["email"])){
                 </div>
                 <!-- /.box -->
               </div>
+              <?php
+                foreach($valor as $blug){
+              ?>
+                <div class="post">
+                <div class="box bg-white shadow">
+                  <h2 class="post-title"><?=$blug->getCommentary();?></h2>
+                </div>
+                <!-- /.box -->
+              </div>
+              <?php
+                }
+              ?>
+              <form class="comment-form" id="login-form" action="index.php" method="GET" role="form" style="display: block;">
+              <input id="mod" name="mod" type="hidden" value="comenanime">
+              <input id="ope" name="ope" type="hidden" value="create">
+              <input id="idAni" name="idAni" type="hidden" value="<?=$item->getIdAni();?>">
+              <input id="idUsu" name="idUsu" type="hidden" value="<?php echo $_SESSION['idUsu'];?>">
+
+                <div class="form-group">
+                    <textarea name="commentary" class="form-control" id="commentary" rows="5"  placeholder="Escribe aquí un comentario ..."></textarea>
+                </div>
+
+                <button type="submit" class="btn">Añadir</button>
+              </form>
             <?php
                 }
             ?>
+
               <!-- /.post -->
             </div>
             <!-- /.blog -->

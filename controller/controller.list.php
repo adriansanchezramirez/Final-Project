@@ -19,12 +19,6 @@ class controllerList{
         endif;
     }
 
-    public function index(){
-        $valor = ListaAnime::getallAnimeByUsuario() ;
-        require_once "vista/index.lista.php" ;
-    }
-    
-    
 }
 
 ?>
