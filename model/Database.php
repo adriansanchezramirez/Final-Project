@@ -5,7 +5,7 @@
 		private $dbHost = "localhost" 	 ;
 		private $dbUser = "root"	  	 ;
 		private $dbPass = ""		  	 ;
-		private $dbName = "proyecto"		 ;
+		private $dbName = "proyecto"	 ;
 
 		//
 		private static $prp = null	  	 ;

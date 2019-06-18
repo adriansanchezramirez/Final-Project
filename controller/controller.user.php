@@ -38,7 +38,7 @@ require_once "model/Sesion.php" ;
                         if($resultado->type==0){
                             header("Location: index.php?mod=anime&ope=admin");
                         }else {
-                            header("Location: index.php?mod=anime&ope=anime&idUsu=".$_SESSION["idUsu"]);
+                            header("Location: index.php?mod=anime&ope=anime");
                         }
                         
                     }else{

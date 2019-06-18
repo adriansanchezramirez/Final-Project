@@ -1,0 +1,4 @@
+Administrador del sitio web
+
+correo --> admin@admin.com
+contraseña --> Admin
