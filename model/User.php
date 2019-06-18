@@ -40,7 +40,7 @@ require_once "Manga.php" ;
 
             $bd = new Database;
             $bd->doQuery("SELECT * FROM anime JOIN listanime ON listanime.idAni = anime.idAni
-            WHERE idUsu=:idUsu;", [":idUsu"=>$idUsu]);
+            WHERE idUsu=:idUsu ORDER BY name;", [":idUsu"=>$idUsu]);
     
             $datos = [];
     
@@ -55,7 +55,7 @@ require_once "Manga.php" ;
 
             $bd = new Database;
             $bd->doQuery("SELECT * FROM manga JOIN listamanga ON listamanga.idMan = manga.idMan
-            WHERE idUsu=:idUsu;", [":idUsu"=>$idUsu]);
+            WHERE idUsu=:idUsu  ORDER BY title;", [":idUsu"=>$idUsu]);
     
             $datos = [];
     
@@ -65,5 +65,20 @@ require_once "Manga.php" ;
     
             return $datos;
         }
+
+        public function deleteAni($idAni){
+            $bd = Database::getInstance() ;
+            $bd->doQuery("DELETE FROM listanime WHERE idAni=:idAni ;",
+                [ ":idAni" => $idAni
+                  ]) ;
+        }
+
+        public function deleteMan($idMan){
+            $bd = Database::getInstance() ;
+            $bd->doQuery("DELETE FROM listamanga WHERE idMan=:idMan;",
+                [ ":idMan" => $idMan
+                  ]) ;
+        }
+
     }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2019 a las 22:04:07
+-- Tiempo de generación: 18-06-2019 a las 18:54:22
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -154,7 +154,8 @@ CREATE TABLE `comentario_anime` (
 --
 
 INSERT INTO `comentario_anime` (`idCom`, `idAni`, `idUsu`, `commentary`) VALUES
-(1, 57, 2, 'Pedazo de Ova\r\n');
+(1, 57, 2, 'Pedazo de Ova\r\n'),
+(2, 57, 2, 'Obra Maestra');
 
 -- --------------------------------------------------------
 
@@ -180,13 +181,6 @@ CREATE TABLE `listamanga` (
   `idMan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `listamanga`
---
-
-INSERT INTO `listamanga` (`idUsu`, `idMan`) VALUES
-(2, 20);
-
 -- --------------------------------------------------------
 
 --
@@ -204,8 +198,7 @@ CREATE TABLE `listanime` (
 
 INSERT INTO `listanime` (`idUsu`, `idAni`) VALUES
 (2, 3),
-(3, 3),
-(2, 8);
+(2, 57);
 
 -- --------------------------------------------------------
 
@@ -289,9 +282,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`idUsu`, `name`, `password`, `email`, `type`) VALUES
 (2, 'Adri', '1234', 'prueba@prueba.com', 1),
-(3, 'Kyoya', 'Bankai93', 'prueba@prueba.com', 1),
-(4, 'Admin', 'Admin', 'admin@admin.com', 0),
-(5, 'Prueba', 'prueba', 'esto@prueba.com', 1);
+(3, 'Kyoya', 'Bankai93', 'adrisanchez39@gmail.com', 1),
+(4, 'Admin', 'Admin', 'admin@admin.com', 0);
 
 --
 -- Índices para tablas volcadas
@@ -358,13 +350,13 @@ ALTER TABLE `anime`
 -- AUTO_INCREMENT de la tabla `comentario_anime`
 --
 ALTER TABLE `comentario_anime`
-  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario_manga`
 --
 ALTER TABLE `comentario_manga`
-  MODIFY `idComman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idComman` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `manga`

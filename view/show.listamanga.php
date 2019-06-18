@@ -45,7 +45,6 @@ if (!isset($_SESSION["email"])){
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Mis Listas</a>
               <ul class="dropdown-menu">
-                <li class="nav-item dropdown"><a class="dropdown-item" href="#">Perfil</a></li>
                 <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showanime&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Anime</a></li>
                 <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showmanga&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Manga</a></li>
               </ul>
@@ -75,7 +74,9 @@ if (!isset($_SESSION["email"])){
                   </div>
                   <!-- /.post-content -->
                   <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span><a href="index.php?mod=list&ope=create&idMan=<?=$item->getIdMan();?>&idUsu=<?php echo $_SESSION['idUsu'];?>"> Añadir</a></span><span class="comments"><a href="#">3</a></span></div>
+                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span>
+                  <span><a href="index.php?mod=user&ope=deleteman&idMan=<?=$item->getIdMan();?>&idUsu=<?php echo $_SESSION['idUsu'];?>"> Borrar</a></span>
+                  </div>
                 </div>
                 <!-- /.box -->
               </div>
@@ -84,33 +85,13 @@ if (!isset($_SESSION["email"])){
             ?>
               <!-- /.post -->
             </div>
-            <!-- /.blog -->
-            <div class="pagination bg">
-              <ul>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
-                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
-              </ul>
-            </div>
-            <!-- /.pagination -->
+            
           </div>
 
           
           <!--/column -->
           <aside class="col-md-4 sidebar">
-          
-          <div class="sidebox widget">
-            <h3 class="widget-title">Buscador</h3>
-            <form class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control" >
-              </div>
-              <!-- /.form-group -->
-            </form>
-            <!-- /.search-form -->
-          </div>
+
             <!-- /.widget -->
             <div class="sidebox widget">
               <h3 class="widget-title">Sobre el Autor</h3>

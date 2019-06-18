@@ -45,7 +45,6 @@ if (!isset($_SESSION["email"])){
             </li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Mis Listas</a>
               <ul class="dropdown-menu">
-                <li class="nav-item dropdown"><a class="dropdown-item" href="#">Perfil</a></li>
                 <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showanime&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Anime</a></li>
                 <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showmanga&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Manga</a></li>
               </ul>
@@ -72,7 +71,7 @@ if (!isset($_SESSION["email"])){
                   </div>
                   <!-- /.post-content -->
                   <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span class="comments"><a href="#">3</a></span></div>
+                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span></div>
                 </div>
                 <!-- /.box -->
               </div>

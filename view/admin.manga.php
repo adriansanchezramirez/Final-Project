@@ -81,33 +81,13 @@ if (!isset($_SESSION["email"])){
             ?>
               <!-- /.post -->
             </div>
-            <!-- /.blog -->
-            <div class="pagination bg">
-              <ul>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
-                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
-              </ul>
-            </div>
-            <!-- /.pagination -->
+
           </div>
 
           
           <!--/column -->
           <aside class="col-md-4 sidebar">
           
-          <div class="sidebox widget">
-            <h3 class="widget-title">Buscador</h3>
-            <form class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control" >
-              </div>
-              <!-- /.form-group -->
-            </form>
-            <!-- /.search-form -->
-          </div>
             <!-- /.widget -->
             <div class="sidebox widget">
               <h3 class="widget-title">Sobre el Autor</h3>

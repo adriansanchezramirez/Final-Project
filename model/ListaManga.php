@@ -23,21 +23,6 @@ class ListaManga{
         [":idUsu"=>$this->idUsu,
          ":idMan"=>$this->idMan]) ;
     }
-
-    public static function getallMangaByUsuario(){
-        $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT * FROM listamanga ;") ;
-
-        $valor = [] ;
-
-        while($obj = $bd->getRow("ListaManga")){
-            array_push($valor,$obj);
-        }
  
-        return $valor;
-    }
-
-    
-    
     
 }

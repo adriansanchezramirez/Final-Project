@@ -38,7 +38,7 @@ require_once "model/Sesion.php" ;
                         if($resultado->type==0){
                             header("Location: index.php?mod=anime&ope=admin");
                         }else {
-                            header("Location: index.php?mod=anime&ope=anime");
+                            header("Location: index.php?mod=anime&ope=anime&idUsu=".$_SESSION["idUsu"]);
                         }
                         
                     }else{
@@ -88,5 +88,24 @@ require_once "model/Sesion.php" ;
             require_once "view/show.listamanga.php";
         }
 
+        public static function deleteAni(){
+			if (isset($_GET["idAni"])) {
+				User::deleteAni($_GET["idAni"]) ;
+
+				header("Location: index.php?mod=anime&ope=anime");
+			} else {
+				header("Location: index.php?mod=anime&ope=anime");
+			}
+        }
+
+        public static function deleteMan(){
+			if (isset($_GET["idMan"])) {
+				User::deleteMan($_GET["idMan"]) ;
+
+				header("Location: index.php?mod=manga&ope=manga");
+			} else {
+				header("Location: index.php?mod=manga&ope=manga");
+			}
+        }
     }
 ?>

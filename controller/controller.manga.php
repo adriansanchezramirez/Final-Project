@@ -2,6 +2,7 @@
 require_once "model/Manga.php" ;
 require_once "model/Sesion.php" ;
 require_once "model/ComentarioManga.php" ;
+require_once "model/User.php" ;
 
 
 class controllerManga{
@@ -20,6 +21,7 @@ class controllerManga{
 
         public function manga(){
             $datos = Manga::getAllManga() ;
+
             require_once "view/manga.php" ;
         }
 

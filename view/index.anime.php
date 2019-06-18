@@ -63,7 +63,7 @@ if (isset($_SESSION["email"])){
                   </div>
                   <!-- /.post-content -->
                   <hr />
-                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span><span class="comments"><a href="#">3</a></span></div>
+                  <div class="meta meta-footer d-flex justify-content-between mb-0"><span class="date"> Numero de Capitulos: <?=$item->getEpisode();?></span></div>
                 </div>
                 <!-- /.box -->
               </div>
@@ -72,17 +72,7 @@ if (isset($_SESSION["email"])){
             ?>
               <!-- /.post -->
             </div>
-            <!-- /.blog -->
-            <div class="pagination bg">
-              <ul>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-left"></i></a></li>
-                <li class="active"><a href="#" class="btn btn-white shadow"><span>1</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>2</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><span>3</span></a></li>
-                <li><a href="#" class="btn btn-white shadow"><i class="mi-arrow-right"></i></a></li>
-              </ul>
-            </div>
-            <!-- /.pagination -->
+
           </div>
 
           

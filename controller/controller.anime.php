@@ -2,7 +2,7 @@
 require_once "model/Anime.php" ;
 require_once "model/Sesion.php" ;
 require_once "model/ComentarioAnime.php" ;
-
+require_once "model/User.php" ;
 
 class controllerAnime{
 
@@ -20,6 +20,7 @@ class controllerAnime{
 
         public function anime(){
             $datos = Anime::getAllAnime() ;
+            
             require_once "view/anime.php" ;
         }
 
